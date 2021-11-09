@@ -1,3 +1,5 @@
+variable "project" {}
+
 locals {
   bucket = "${var.project}-tfstate"
 }
