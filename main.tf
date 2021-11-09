@@ -4,7 +4,7 @@ locals {
 
 terraform {
   backend "gcs" {
-    bucket = local.bucket
+    bucket = "slalom-2020-293920-tfstate"
   }
 }
 
