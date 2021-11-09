@@ -4,3 +4,5 @@ steps:
   args:
     - 'echo'
     - 'hi cloud build'
+options:
+  logging: CLOUD_LOGGING_ONLY
