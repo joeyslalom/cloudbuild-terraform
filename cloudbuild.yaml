@@ -1,15 +1,27 @@
 steps:
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+# https://github.com/GoogleCloudPlatform/cloud-sdk-docker
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:364.0.0'
   entrypoint: 'echo'
   args:
     - 'hi cloud build'
+
+# https://github.com/hashicorp/terraform
 - id: 'tf init'
-  name: 'hashicorp/terraform:1.0.0'
+  name: 'hashicorp/terraform:1.0.10'
   entrypoint: 'sh'
   args: 
   - '-c'
   - |
       terraform init
+  env:
+  - 'TF_VAR_project=$PROJECT_ID'
+- id: 'tf plan'
+  name: 'hashicorp/terraform:1.0.10'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - |
+      terraform plan
   env:
   - 'TF_VAR_project=$PROJECT_ID'
 
