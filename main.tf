@@ -1,4 +1,7 @@
-variable "project" {}
+variable "project" {
+    description = "Google project id. Override with TF_VAR_project"
+    default = "PROJECT_ID"
+}
 
 locals {
   bucket = "${var.project}-tfstate"
@@ -13,3 +16,14 @@ terraform {
 provider "google" {
   project = var.project
 }
+
+// https://github.com/terraform-google-modules/terraform-google-pubsub
+/*
+module "pubsub" {
+  source  = "terraform-google-modules/pubsub/google"
+  version = "~> 1.8"
+
+  topic      = "tf-topic"
+  project_id = var.project
+}
+*/
