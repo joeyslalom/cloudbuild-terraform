@@ -3,6 +3,16 @@ steps:
   entrypoint: 'echo'
   args:
     - 'hi cloud build'
+- id: 'tf init'
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - |
+      terraform init
+  env:
+  - 'TF_VAR_project=$PROJECT_ID'
+
 # so the service account doesn't need storage roles / specify bucket
 options:
   logging: CLOUD_LOGGING_ONLY

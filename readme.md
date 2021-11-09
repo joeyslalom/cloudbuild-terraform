@@ -35,4 +35,5 @@ Inspired by [Managing infrastructure as code with Terraform, Cloud Build, and Gi
         gsutil mb gs://$GOOGLE_CLOUD_PROJECT-tfstate
 
         gsutil versioning set on gs://${GOOGLE_CLOUD_PROJECT}-tfstate
+        
 ## PubSub
