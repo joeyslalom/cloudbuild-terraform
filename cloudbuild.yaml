@@ -15,6 +15,7 @@ steps:
       terraform init
   env:
   - 'TF_VAR_project=$PROJECT_ID'
+
 - id: 'tf plan'
   name: 'hashicorp/terraform:1.0.10'
   entrypoint: 'sh'
@@ -25,6 +26,20 @@ steps:
   env:
   - 'TF_VAR_project=$PROJECT_ID'
 
+- id: 'tf apply'
+  name: 'hashicorp/terraform:1.0.10'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - | 
+      if [ "master" = "$BRANCH_NAME" ]; then
+        terraform apply -auto-approve
+      else
+        echo "***************************** SKIPPING APPLYING *******************************"
+        echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
+        echo "*******************************************************************************"
+      fi
+      
 # so the service account doesn't need storage roles / specify bucket
 options:
   logging: CLOUD_LOGGING_ONLY

@@ -35,5 +35,12 @@ Inspired by [Managing infrastructure as code with Terraform, Cloud Build, and Gi
         gsutil mb gs://$GOOGLE_CLOUD_PROJECT-tfstate
 
         gsutil versioning set on gs://${GOOGLE_CLOUD_PROJECT}-tfstate
-        
+
+## GitHub
+
+1. Update CloudBuild trigger branch to `.*`
+2. Update GitHub repo:
+    * Protect `master` branch
+    * Require status check, add CloudBuild trigger
+
 ## PubSub
