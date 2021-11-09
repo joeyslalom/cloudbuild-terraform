@@ -1,8 +1,7 @@
 steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'bash'
+  entrypoint: 'echo'
   args:
-    - 'echo'
     - 'hi cloud build'
 # so the service account doesn't need storage roles
 options:
