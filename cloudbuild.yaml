@@ -3,6 +3,3 @@ steps:
   entrypoint: 'echo'
   args:
     - 'hi cloud build'
-# so the service account doesn't need storage roles
-options:
-  logging: CLOUD_LOGGING_ONLY
