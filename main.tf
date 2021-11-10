@@ -18,7 +18,6 @@ provider "google" {
 }
 
 // https://github.com/terraform-google-modules/terraform-google-pubsub
-/*
 module "pubsub" {
   source  = "terraform-google-modules/pubsub/google"
   version = "~> 1.8"
@@ -26,4 +25,3 @@ module "pubsub" {
   topic      = "tf-topic"
   project_id = var.project
 }
-*/
