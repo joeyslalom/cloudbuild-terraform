@@ -39,7 +39,9 @@ steps:
         echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
         echo "*******************************************************************************"
       fi
-      
+  env:
+  - 'TF_VAR_project=$PROJECT_ID'
+        
 # so the service account doesn't need storage roles / specify bucket
 options:
   logging: CLOUD_LOGGING_ONLY
