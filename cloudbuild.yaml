@@ -8,30 +8,34 @@ steps:
 # https://github.com/hashicorp/terraform
 - id: 'tf init'
   name: 'hashicorp/terraform:1.0.10'
+  env:
+  - 'TF_VAR_project=$PROJECT_ID'
   entrypoint: 'sh'
-  args: 
+  args:
   - '-c'
   - |
       terraform init -no-color
-  env:
-  - 'TF_VAR_project=$PROJECT_ID'
 
+# plan
 - id: 'tf plan'
   name: 'hashicorp/terraform:1.0.10'
+  env:
+  - 'TF_VAR_project=$PROJECT_ID'
   entrypoint: 'sh'
-  args: 
+  args:
   - '-c'
   - |
       terraform plan -no-color
-  env:
-  - 'TF_VAR_project=$PROJECT_ID'
 
+# apply
 - id: 'tf apply'
   name: 'hashicorp/terraform:1.0.10'
+  env:
+  - 'TF_VAR_project=$PROJECT_ID'
   entrypoint: 'sh'
-  args: 
+  args:
   - '-c'
-  - | 
+  - |
       if [ "master" = "$BRANCH_NAME" ]; then
         terraform apply -auto-approve -no-color
       else
@@ -39,9 +43,7 @@ steps:
         echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
         echo "*******************************************************************************"
       fi
-  env:
-  - 'TF_VAR_project=$PROJECT_ID'
-        
+
 # so the service account doesn't need storage roles / specify bucket
 options:
   logging: CLOUD_LOGGING_ONLY
